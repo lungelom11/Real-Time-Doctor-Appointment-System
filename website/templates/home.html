@@ -32,7 +32,35 @@
     {% endwith %}
     
     {% block body%}
-            <h1>Home Page</h1>
+    <div class="container col-xxl-8 px-4 py-5">
+        <nav class="navbar bg-body-tertiary">
+            <div class="container-fluid">
+            <h2>DAA</h2>
+            <div class="d-flex">
+                <a href="/login" class="btn btn-primary btn-lg px-4 me-md-2">Login</a>
+                <a href="/register" class="btn btn-outline-primary btn-lg px-4 me-md-2">Register</a>
+            </div>
+            </div>
+        </nav>
+        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+          <div class="col-10 col-sm-8 col-lg-6">
+            <img src="{{url_for('static', filename='images/dental-home.jpg')}}" class="d-block mx-lg-auto img-fluid" alt="Dental Home" width="500" height="300" loading="lazy">
+          </div>
+          <div class="col-lg-6">
+            <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Doctor Appointment Application</h1>
+            <ul class="lead">
+                <li class="mb-2">Dental Examinations and Preventive Care</li>
+                <li class="mb-2">Orthodontics and Teeth Straightening</li>
+                <li class="mb-2">Restorative Dentistry</li>
+                <li class="mb-2">Oral Surgery and Tooth Extraction</li>
+            </ul>
+            <p class="lead mb-3">We also offer a wide range of other treatments and services to address various oral health issues and concerns.</p>
+            <div class=" justify-content-md-center">
+                <a href="/login" class="btn btn-outline-danger btn-lg px-4 me-md-2">Book Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
     {% endblock %}
 
 
