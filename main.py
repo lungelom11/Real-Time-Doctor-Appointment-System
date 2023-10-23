@@ -1,11 +1,6 @@
-from flask import Flask
+from website import create_app
 
-app = Flask(__name__)
-
-@app.route("/")
-def home():
-    return "<h1>Home Page</h1>"
-
+app = create_app()
 
 if __name__ == "__main__":
     app.run(debug=True)
