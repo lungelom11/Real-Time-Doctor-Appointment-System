@@ -1,0 +1,68 @@
+{% extends "home.html "%}
+
+{% block title %} Admin {% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1 class="mb-5">Manage Users</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">First</th>
+          <th scope="col">Last</th>
+          <th scope="col">Email</th>
+          <th scope="col">Role</th>
+          <th scope="col" class="text-center">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in users%}
+        <tr>
+          <th scope="row">{{loop.index}}</th>
+          <td>{{user.firstname}}</td>
+          <td>{{ user.lastname }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.role }}</td>
+          <td class="actions">
+            <span>
+             <!--<a href="/{{user.id}}/update"><i class="fa-solid fa-pen-to-square" style="color: #1bd80e;"></i></a>-->
+             <button type="button" onclick="window.location.href='/{{user.id}}/delete'" data-bs-toggle="modal" data-bs-target="#delete-user">
+                <i class="fa-solid fa-pen-to-square" style="color: #1bd80e;"></i>
+              </button>
+            </span>
+            <span>
+                <button type="button" data-bs-toggle="modal" data-bs-target="#delete-user">
+                    <i class="fa-solid fa-trash-can" style="color: #f20202;"></i>
+                </button>
+            </span>
+            
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>    
+
+  <!-- Button trigger modal -->
+  
+  <!-- Modal -->
+  <div class="modal fade" id="delete-user" tabindex="-1" aria-labelledby="deleteUserModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Delete User</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form action="" method="post" class="text-center">
+                <h3 class="mb-2"> Click YES to confirm</h3> 
+                <input type="submit" value="YES" class="btn btn-danger mb-2"><br>
+                <a href="/admin">Cancel</a>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
