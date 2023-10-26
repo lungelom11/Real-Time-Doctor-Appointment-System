@@ -4,11 +4,12 @@ ul li{
 .role-text{
     color: rgb(50, 50, 237);
 }
-.actions {
-    display: flex;
-    justify-content: space-around;
-}
+
 .actions span button {
     border: none;
     background-color: #fff;
+}
+
+.nav li{
+    list-style-type: none;
 }

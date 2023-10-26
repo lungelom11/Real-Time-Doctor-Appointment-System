@@ -24,45 +24,41 @@
           <td>{{ user.lastname }}</td>
           <td>{{ user.email }}</td>
           <td>{{ user.role }}</td>
-          <td class="actions">
+          <td class="actions d-flex justify-content-around">
             <span>
-             <!--<a href="/{{user.id}}/update"><i class="fa-solid fa-pen-to-square" style="color: #1bd80e;"></i></a>-->
-             <button type="button" onclick="window.location.href='/{{user.id}}/delete'" data-bs-toggle="modal" data-bs-target="#delete-user">
+              <a href="#" data-bs-toggle="modal" data-bs-target="#updateUser">
                 <i class="fa-solid fa-pen-to-square" style="color: #1bd80e;"></i>
-              </button>
+              </a>
             </span>
             <span>
-                <button type="button" data-bs-toggle="modal" data-bs-target="#delete-user">
-                    <i class="fa-solid fa-trash-can" style="color: #f20202;"></i>
-                </button>
+              <a href="/delete/{{ user.id }}" onclick="">
+                <i class="fa-solid fa-trash-can" style="color: #f20202;"></i>
+              </a>
             </span>
             
           </td>
         </tr>
+        <!--Update User Modal-->
+        <div class="modal fade" id="updateUser" tabindex="-1" aria-labelledby="updateeUserModal" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Update User</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <h1>Update User Form</h1>
+              </div>
+            </div>
+          </div>
+        </div>
         {% endfor %}
       </tbody>
     </table>
   </div>    
 
-  <!-- Button trigger modal -->
+
+
   
-  <!-- Modal -->
-  <div class="modal fade" id="delete-user" tabindex="-1" aria-labelledby="deleteUserModal" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Delete User</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <form action="" method="post" class="text-center">
-                <h3 class="mb-2"> Click YES to confirm</h3> 
-                <input type="submit" value="YES" class="btn btn-danger mb-2"><br>
-                <a href="/admin">Cancel</a>
-            </form>
-        </div>
-      </div>
-    </div>
-  </div>
 
 {% endblock %}
