@@ -1,0 +1,64 @@
+{% extends "home.html "%}
+
+{% block title %} Admin {% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1 class="mb-5">Manage Users</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">First</th>
+          <th scope="col">Last</th>
+          <th scope="col">Email</th>
+          <th scope="col">Role</th>
+          <th scope="col" class="text-center">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in users%}
+        <tr>
+          <th scope="row">{{loop.index}}</th>
+          <td>{{user.firstname}}</td>
+          <td>{{ user.lastname }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.role }}</td>
+          <td class="actions d-flex justify-content-around">
+            <span>
+              <a href="#" data-bs-toggle="modal" data-bs-target="#updateUser">
+                <i class="fa-solid fa-pen-to-square" style="color: #1bd80e;"></i>
+              </a>
+            </span>
+            <span>
+              <a href="/delete/{{ user.id }}" onclick="">
+                <i class="fa-solid fa-trash-can" style="color: #f20202;"></i>
+              </a>
+            </span>
+            
+          </td>
+        </tr>
+        <!--Update User Modal-->
+        <div class="modal fade" id="updateUser" tabindex="-1" aria-labelledby="updateeUserModal" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Update User</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <h1>Update User Form</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>    
+
+
+
+  
+
+{% endblock %}
