@@ -1,6 +1,4 @@
-ul li{
-    list-style-type: circle;
-}
+
 .role-text{
     color: rgb(50, 50, 237);
 }
@@ -8,10 +6,6 @@ ul li{
 .actions span button {
     border: none;
     background-color: #fff;
-}
-
-.nav li{
-    list-style-type: none;
 }
 
 .book-nav li:hover{
