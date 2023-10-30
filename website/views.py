@@ -13,10 +13,14 @@ def home():
 
 
 
-@views.route("/book", methods=["GET","POST"])
+@views.route("/appointment", methods=["GET","POST"])
 @login_required
 def book():
-    return render_template("book.html", current=current_user)
+    return render_template("appointment.html", current=current_user)
+
+@views.route("patient-info")    
+def patientInfo():
+    return render_template("patient.html", current= current_user)
 
 @views.route("/admin", methods=["GET","POST"])
 @login_required
@@ -53,5 +57,3 @@ def delete(id):
     db.session.commit()
     flash("User Deleted", category="success")
     return redirect(url_for("views.admin"))
-
-    

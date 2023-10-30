@@ -8,8 +8,6 @@
     background-color: #fff;
 }
 
-.book-nav li:hover{
-    background-color: #0000ef;
-    border: none;
-    border-radius: 10px;
+.nav-pills li a:hover{
+    background-color: #0f13ea;
 }
