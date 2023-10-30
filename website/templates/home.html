@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %} Home {% endblock %}</title>
     <!--Bootstrap CDN-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!--FontAwesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{url_for('static', filename='css/sidebars.css')}}">
 </head>
 <body>
+    <div class="container">
     {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages%}
             {% for category,message in messages %}
@@ -31,37 +32,60 @@
             {% endfor %}
         {% endif %}
     {% endwith %}
+    </div>
     
     {% block body%}
-    <div class="container col-xxl-8 px-4 py-5">
-        <nav class="navbar bg-body-tertiary">
-            <div class="container-fluid">
-            <h2>DAA</h2>
-            <div class="d-flex">
-                <a href="/login" class="btn btn-primary btn-lg px-4 me-md-2">Login</a>
-                <a href="/register" class="btn btn-outline-primary btn-lg px-4 me-md-2">Register</a>
+    <div class="min-vh-100 bg-dark">
+        <!--Navbar-->
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark py-4">
+        <div class="container">
+            <h4 class="navbar-brand">Doctor App</h4>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+             <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navmenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item mb-3 mx-md-3">
+                        <a class="btn btn-primary" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-primary" href="/register">Register</a>
+                    </li>
+                </ul>
             </div>
-            </div>
-        </nav>
-        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-          <div class="col-10 col-sm-8 col-lg-6">
-            <img src="{{url_for('static', filename='images/dental-home.jpg')}}" class="d-block mx-lg-auto img-fluid" alt="Dental Home" width="500" height="300" loading="lazy">
-          </div>
-          <div class="col-lg-6">
-            <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Doctor Appointment Application</h1>
-            <ul class="lead">
-                <li class="mb-2">Dental Examinations and Preventive Care</li>
-                <li class="mb-2">Orthodontics and Teeth Straightening</li>
-                <li class="mb-2">Restorative Dentistry</li>
-                <li class="mb-2">Oral Surgery and Tooth Extraction</li>
-            </ul>
-            <p class="lead mb-3">We also offer a wide range of other treatments and services to address various oral health issues and concerns.</p>
-            <div class=" justify-content-md-center">
-                <a href="/login" class="btn btn-outline-danger btn-lg px-4 me-md-2">Book Now</a>
-            </div>
-          </div>
         </div>
-      </div>
+        
+    </nav>
+    <!--Hero Section-->
+    <section class="bg-dark text-light text-center text-sm-start">
+        <div class="container">
+            <div class="d-sm-flex align-items-center justify-content-between">
+                <div>
+                    <h1 class="mb-3">Doctor Online Appointment</h1>
+                    <ul class="lead list-unstyled">
+                        <li class="text-warning mb-3">Dental Examinations and Preventive Care</li>
+                        <li class="text-warning mb-3">Orthodontics and Teeth Straightening</li>
+                        <li class="text-warning mb-3">Restorative Dentistry</li>
+                        <li class="text-warning mb-3">Oral Surgery and Tooth Extraction</li>
+                    </ul>
+                    <p class="lead mb-3">We also offer a wide range of other treatments and services to address various oral health issues and concerns.</p>
+                    <a href="/appointment" class="btn btn-danger btn-lg my-4">Book Now</a>
+                </div>
+                <img src="{{url_for('static', filename='images/svg.svg')}}" class="d-none d-md-block img-fluid border-radius" width="400px" alt="Dental Home">
+                
+            </div>
+            
+        </div>
+    </section>
+    <!--Footer-->
+    <footer class="bg-dark align-items-center ">
+        <div class="container border-top text-center py-3">
+            <span class="text-light">&copy; 2023 5AsITgroup, Inc</span>
+        </div>
+    </footer>
+
+    </div>
     {% endblock %}
 
 
@@ -71,9 +95,9 @@
 
 
 
-     <!--Bootsrap CDN Javascript-->
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+     <!--Js-->
      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+     <script src="{{url_for('static', filename='sidebars.js')}}"></script>
 </body>
 </html>

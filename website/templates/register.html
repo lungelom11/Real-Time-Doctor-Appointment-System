@@ -2,46 +2,79 @@
 {% block title %} Register {% endblock %}
 
 {% block body %}
-<div class="container col-xl-10 col-xxl-8 px-4">
-    <h1 class="text-center mb-5">Register</h1>
-    <div class="row align-items-center g-lg-5 py-3">
-      <div class="col-md-10 mx-auto col-lg-5">
-        <form class="p-4 p-md-5 border rounded-3 bg-body-tertiary" action="#" method="post">
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="floatingInput" name="firstname" placeholder="Firstname">
-                <label for="floatingInput">First Name</label>
-            </div>
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="floatingInput" name="lastname" placeholder="Lastname">
-                <label for="floatingInput">Last Name</label>
-            </div>
-          <div class="form-floating mb-3">
-            <input type="email" class="form-control" name="email" id="floatingInput" placeholder="name@example.com">
-            <label for="floatingInput">Email address</label>
-          </div>
-          <div class="mb-3">
-            <label for="role" class="role-text"> Select appropriate choice:</label>
-            <select name="role"  class="form-select align-items-center" aria-label="Roles">
-                <option value="Doctor" selected>Doctor</option>
-                <option value="Patient">Patient</option>
-                <option value="Admin">Admin</option>
-              </select>
-          </div>
-          <div class="form-floating mb-3">
-            <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Password">
-            <label for="floatingPassword">Password</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input type="password" class="form-control" id="floatingPassword" name="confirm-password" placeholder="Confirm-Password">
-            <label for="floatingPassword">Confirm-Password</label>
-          </div>
-          <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
-          <hr class="my-4">
-          <h5 class="mb-4">Already registered? Login <a href="/login">here</a></h5>
-          <small class="text-body-secondary">By clicking Sign up, you agree to the terms of use.</small>
-        </form>
-      </div>
+
+<div class="min-vh-100 bg-dark d-flex justify-content-center align-items-start py-5">
+  
+  <form class="px-4 pb-4 border rounded-3 bg-body-tertiary w-40" action="#" method="post">
+    <h1 class="my-2 text-center">REGISTER</h1>
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="floatingInput" name="firstname" placeholder="Firstname" required>
+        <label for="floatingInput">First Name</label>
     </div>
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="floatingInput" name="lastname" placeholder="Lastname" required>
+        <label for="floatingInput">Last Name</label>
+    </div>
+  <div class="form-floating mb-3">
+    <input type="email" class="form-control" name="email" id="floatingInput" placeholder="name@example.com">
+    <label for="floatingInput">Email address</label>
   </div>
+  <div class="mb-3">
+    <label for="role" class="role-text"> Select appropriate choice:</label>
+    <select name="role"  class="form-select align-items-center" aria-label="Roles">
+        <option value="Doctor" selected>Doctor</option>
+        <option value="Patient">Patient</option>
+        <option value="Admin">Admin</option>
+      </select>
+  </div>
+  <div class="form-floating mb-3">
+    <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Password">
+    <label for="floatingPassword">Password</label>
+  </div>
+  <div class="form-floating mb-3">
+    <input type="password" class="form-control" id="floatingPassword" name="confirm-password" placeholder="Confirm-Password">
+    <label for="floatingPassword">Confirm-Password</label>
+  </div>
+  <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
+  <hr class="my-4">
+  <p class="mb-4">Already registered? Login <a href="/login">here</a></p>
+  <small class="text-body-secondary">By clicking Sign up, you agree to the terms of use.</small>
+  </form>
+</div>
 
 {% endblock %}
+
+<form class="p-4 p-md-5 border rounded-3 bg-body-tertiary" action="#" method="post">
+  <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="floatingInput" name="firstname" placeholder="Firstname">
+      <label for="floatingInput">First Name</label>
+  </div>
+  <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="floatingInput" name="lastname" placeholder="Lastname">
+      <label for="floatingInput">Last Name</label>
+  </div>
+<div class="form-floating mb-3">
+  <input type="email" class="form-control" name="email" id="floatingInput" placeholder="name@example.com">
+  <label for="floatingInput">Email address</label>
+</div>
+<div class="mb-3">
+  <label for="role" class="role-text"> Select appropriate choice:</label>
+  <select name="role"  class="form-select align-items-center" aria-label="Roles">
+      <option value="Doctor" selected>Doctor</option>
+      <option value="Patient">Patient</option>
+      <option value="Admin">Admin</option>
+    </select>
+</div>
+<div class="form-floating mb-3">
+  <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Password">
+  <label for="floatingPassword">Password</label>
+</div>
+<div class="form-floating mb-3">
+  <input type="password" class="form-control" id="floatingPassword" name="confirm-password" placeholder="Confirm-Password">
+  <label for="floatingPassword">Confirm-Password</label>
+</div>
+<button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
+<hr class="my-4">
+<h5 class="mb-4">Already registered? Login <a href="/login">here</a></h5>
+<small class="text-body-secondary">By clicking Sign up, you agree to the terms of use.</small>
+</form>

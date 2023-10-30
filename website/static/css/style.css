@@ -1,6 +1,4 @@
-ul li{
-    list-style-type: circle;
-}
+
 .role-text{
     color: rgb(50, 50, 237);
 }
@@ -10,6 +8,6 @@ ul li{
     background-color: #fff;
 }
 
-.nav li{
-    list-style-type: none;
+.nav-pills li a:hover{
+    background-color: #0f13ea;
 }

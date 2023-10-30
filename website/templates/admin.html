@@ -1,6 +1,6 @@
 {% extends "home.html "%}
 
-{% block title %} Admin {% endblock %}
+{% block title %} Admin | {{ current.firstname}} {% endblock %}
 
 {% block body %}
 <div class="container">
@@ -26,12 +26,12 @@
           <td>{{ user.role }}</td>
           <td class="actions d-flex justify-content-around">
             <span>
-              <a href="#" data-bs-toggle="modal" data-bs-target="#updateUser">
+              <a href="/update/{{user.id}}" data-bs-toggle="modal" data-bs-target="#updateUser{{user.id}}">
                 <i class="fa-solid fa-pen-to-square" style="color: #1bd80e;"></i>
               </a>
             </span>
             <span>
-              <a href="/delete/{{ user.id }}" onclick="">
+              <a href="/delete/{{ user.id }}" onclick="return confirm('Are you sure you want to delete the user?')">
                 <i class="fa-solid fa-trash-can" style="color: #f20202;"></i>
               </a>
             </span>
@@ -39,7 +39,7 @@
           </td>
         </tr>
         <!--Update User Modal-->
-        <div class="modal fade" id="updateUser" tabindex="-1" aria-labelledby="updateeUserModal" aria-hidden="true">
+        <div class="modal fade" id="updateUser{{user.id}}" tabindex="-1" aria-labelledby="updateeUserModal" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
@@ -47,7 +47,36 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                  <h1>Update User Form</h1>
+                <form class="bg-body-tertiary" action="{{url_for('views.update')}}" method="post">
+                  <div class="form-floating mb-3">
+                      <input type="text" class="form-control" id="floatingInput" name="firstname" value="{{user.firstname}}">
+                      <label for="floatingInput">First Name</label>
+                      <input type="hidden" name="id" value="{{user.id}}">
+                  </div>
+                  <div class="form-floating mb-3">
+                      <input type="text" class="form-control" id="floatingInput" name="lastname" value="{{user.lastname}}">
+                      <label for="floatingInput">Last Name</label>
+                  </div>
+                <div class="form-floating mb-3">
+                  <input type="email" class="form-control" name="email" id="floatingInput" value="{{user.email}}">
+                  <label for="floatingInput">Email address</label>
+                </div>  
+                <div class="mb-3">
+                  <label for="role" class="role-text"> Select appropriate choice:</label>
+                  <select name="role"  class="form-select align-items-center"  aria-label="Roles">
+                      <option value="{{ user.role }}" disabled selected>{{ user.role }}</option>
+                      <option value="Doctor">Doctor</option>
+                      <option value="Patient">Patient</option>
+                      <option value="Admin">Admin</option>
+                    </select>
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="password" class="form-control" name="password" id="floatingPassword" value="test1234">
+                  <label for="floatingPassword">Password</label>
+                </div>
+                <button class="w-100 btn btn-lg btn-primary" type="submit">Update</button>
+                <hr class="my-4">
+              </form>
               </div>
             </div>
           </div>
