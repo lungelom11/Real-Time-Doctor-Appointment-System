@@ -1,0 +1,31 @@
+{% extends "dashboard.html" %}
+
+{% block content%}
+<div class="container d-flex justify-content-center flex-column align-items-center">
+    <div class="shadow p-3 mb-5 bg-body rounded">
+        <div class="card">
+            <div class="card-header bg-success">
+              <h4>Active Appointment</h4>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Appointment details</h5>
+              <p class="card-text">Reference_Id: <span class="text-warning">12345</span></p>
+              <p class="card-text">Name(s): <span class="text-warning">{{ current.firstname }}</span></p>
+              <p class="card-text">Surname: <span class="text-warning">{{ current.lastname }}</span></p>
+              <p class="card-text">Contact number: <span class="text-warning">{{ current.contact_no }}</span></p>
+              <p class="card-text">Appointment Date: <span class="text-warning">10 November 2023</span></p>
+              <p class="card-text">Branch: <span class="text-warning">Branch 2</span></p>
+              <p class="card-text">Start time: <span class="text-warning">11:00AM</span></p>
+              <p class="card-text">End time: <span class="text-warning">12:00pm</span></p>
+            </div>
+            <div class="card-footer">
+              <div class="d-grid gap-2">
+                <a href="/cancel-appointment" class="btn btn-danger">Cancel Appointment</a>
+                <a href="/update-appointment" class="btn btn-warning">Update Appointment</a>
+              </div>
+            </div>
+          </div>
+    </div>
+</div>
+
+{% endblock%}

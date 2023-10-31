@@ -15,18 +15,26 @@ def home():
 
 @views.route("/appointment", methods=["GET","POST"])
 @login_required
-def book():
+def appointment():
     return render_template("appointment.html", current=current_user)
 
-@views.route("patient-info")    
+@views.route("/patient-info")    
 def patientInfo():
     return render_template("patient.html", current= current_user)
+
+@views.route("/view-appointment")    
+def viewAppointment():
+    return render_template("view-appointment.html", current= current_user)    
 
 @views.route("/admin", methods=["GET","POST"])
 @login_required
 def admin():
     users = User.query.all()
     return render_template("admin.html", users = users,current=current_user)
+
+@views.route("/schedule")    
+def schedule():
+    return render_template("schedule.html", current= current_user) 
 
 
 
@@ -40,7 +48,7 @@ def update():
         user_data.firstname = request.form["firstname"]
         user_data.lastname = request.form["lastname"]
         user_data.password = request.form["password"]
-        user_data.role = request.form["role"]
+        user_data.contact_no = request.form["contact_no"]
 
         db.session.commit()
 

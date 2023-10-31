@@ -4,26 +4,26 @@
 
 {% block body %}
 <div class="container">
-    <h1 class="mb-5">Manage Users</h1>
+    <h1 class="mb-5">Manage Patients</h1>
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">#</th>
+          <th scope="col">Patient_Id</th>
           <th scope="col">First</th>
           <th scope="col">Last</th>
           <th scope="col">Email</th>
-          <th scope="col">Role</th>
+          <th scope="col">Contact No</th>
           <th scope="col" class="text-center">Actions</th>
         </tr>
       </thead>
       <tbody>
         {% for user in users%}
         <tr>
-          <th scope="row">{{loop.index}}</th>
+          <th scope="row">{{user.id}}</th>
           <td>{{user.firstname}}</td>
           <td>{{ user.lastname }}</td>
           <td>{{ user.email }}</td>
-          <td>{{ user.role }}</td>
+          <td>{{ user.contact_no }}</td>
           <td class="actions d-flex justify-content-around">
             <span>
               <a href="/update/{{user.id}}" data-bs-toggle="modal" data-bs-target="#updateUser{{user.id}}">
@@ -61,14 +61,9 @@
                   <input type="email" class="form-control" name="email" id="floatingInput" value="{{user.email}}">
                   <label for="floatingInput">Email address</label>
                 </div>  
-                <div class="mb-3">
-                  <label for="role" class="role-text"> Select appropriate choice:</label>
-                  <select name="role"  class="form-select align-items-center"  aria-label="Roles">
-                      <option value="{{ user.role }}" disabled selected>{{ user.role }}</option>
-                      <option value="Doctor">Doctor</option>
-                      <option value="Patient">Patient</option>
-                      <option value="Admin">Admin</option>
-                    </select>
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" id="floatingInput" name="contact_no" value="{{user.contact_no}}">
+                  <label for="floatingInput">Contact Number</label>
                 </div>
                 <div class="form-floating mb-3">
                   <input type="password" class="form-control" name="password" id="floatingPassword" value="test1234">

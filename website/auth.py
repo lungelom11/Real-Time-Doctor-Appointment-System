@@ -18,7 +18,7 @@ def login():
             if check_password_hash(user.password, password):
                     flash("Logged in successfully", category="success") 
                     login_user(user, remember=True)   
-                    return redirect(url_for("views.book"))
+                    return redirect(url_for("views.appointment"))
             else:
                 flash("Incorrect Password, please try again", category="error")
         else:
@@ -34,7 +34,7 @@ def register():
         email = request.form.get("email")
         password = request.form.get("password")
         password2 = request.form.get("confirm-password")
-        role = request.form.get("role")
+        contact_no = request.form.get("contact_no")
 
         user = User.query.filter_by(email=email).first()
         if user:
@@ -50,12 +50,12 @@ def register():
             flash("Passwords do not match, please enter again.", category="error")
 
         else:
-            new_user = User(email=email, firstname=firstname, lastname=lastname, password=generate_password_hash(password), role=role)
-            db.session.add(new_user)
+            new_patient = User(email=email, firstname=firstname, lastname=lastname, password=generate_password_hash(password), contact_no=contact_no)
+            db.session.add(new_patient)
             db.session.commit()
             flash("Account created!", category="success")
-            login_user(new_user, remember=True)
-            return redirect(url_for("views.admin"))
+            login_user(new_patient, remember=True)
+            return redirect(url_for("views.appointment"))
             
     return render_template("register.html")
 
