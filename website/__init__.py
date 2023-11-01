@@ -4,7 +4,7 @@ from flask_login import LoginManager
 
 
 db = SQLAlchemy()
-DB_NAME = "patient.db"
+DB_NAME = "appointmentBookingDB.db"
 
 def create_app():
     app = Flask(__name__)
@@ -18,7 +18,7 @@ def create_app():
     app.register_blueprint(views, url_prefix="/")
     app.register_blueprint(auth, url_prefix="/")
 
-    from .models import User
+    from .models import Patients, Appointments
 
     with app.app_context():
         db.create_all()
@@ -29,6 +29,6 @@ def create_app():
 
     @login_manager.user_loader
     def load_user(id):
-        return User.query.get(int(id))
+        return Patients.query.get(int(id))
 
     return app
