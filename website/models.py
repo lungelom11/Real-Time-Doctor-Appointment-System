@@ -19,10 +19,10 @@ class Patients(db.Model,UserMixin):
 
 
 class Appointments(db.Model, UserMixin):
-    appointment_id = db.Column(db.String(100), primary_key=True)
+    appointment_id = db.Column(db.Integer, primary_key=True)
     patient_id = db.Column(db.Integer, db.ForeignKey("patients.id"))
     branch = db.Column(db.String(100))
-    date = db.Column(db.Date)
+    date = db.Column(db.String(100))
     time = db.Column(db.String(10))
 
     def __init__(self, patient_id, branch, date, time):

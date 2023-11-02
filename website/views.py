@@ -16,11 +16,16 @@ def home():
 @views.route("/appointment", methods=["GET","POST"])
 @login_required
 def appointment():
-    if request.method == ["POST"]:
+    if request.method == "POST":
         patient_id = current_user.id 
         branch = request.form.get("branch")
         date = request.form.get("date")
         time = request.form.get("time")
+
+        appointment = Appointments.query.filter_by(patient_id=patient_id).first()
+        if appointment:
+            flash("Appointment already exists!", category="error")
+            return redirect(url_for("views.viewAppointment"))
         
         new_appointment = Appointments(patient_id=patient_id, branch=branch, date=date, time=time)
         db.session.add(new_appointment)
@@ -60,7 +65,7 @@ def update():
         patient_info.email = request.form["email"]
         patient_info.firstname = request.form["firstname"]
         patient_info.lastname = request.form["lastname"]
-        patient_info.password = request.form["password"]
+        patient_info.password = generate_password_hash(request.form["password"])
         patient_info.contact_no = request.form["contact_no"]
 
         db.session.commit()
