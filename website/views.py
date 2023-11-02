@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request,redirect, url_for, flash, session
-from .models import User
+from .models import Patients, Appointments
 from . import db
 from werkzeug.security import generate_password_hash
 from flask_login import login_required, current_user
@@ -15,18 +15,44 @@ def home():
 
 @views.route("/appointment", methods=["GET","POST"])
 @login_required
-def book():
+def appointment():
+    if request.method == "POST":
+        patient_id = current_user.id 
+        branch = request.form.get("branch")
+        date = request.form.get("date")
+        time = request.form.get("time")
+
+        appointment = Appointments.query.filter_by(patient_id=patient_id).first()
+        if appointment:
+            flash("Appointment already exists!", category="error")
+            return redirect(url_for("views.viewAppointment"))
+        
+        new_appointment = Appointments(patient_id=patient_id, branch=branch, date=date, time=time)
+        db.session.add(new_appointment)
+        db.session.commit()
+        flash("Appointment created!", category="success")
+        return redirect(url_for("views.viewAppointment"))
+        
     return render_template("appointment.html", current=current_user)
 
-@views.route("patient-info")    
+
+@views.route("/patient-info")    
 def patientInfo():
     return render_template("patient.html", current= current_user)
+
+@views.route("/view-appointment")    
+def viewAppointment():
+    return render_template("view-appointment.html", current= current_user)    
 
 @views.route("/admin", methods=["GET","POST"])
 @login_required
 def admin():
-    users = User.query.all()
-    return render_template("admin.html", users = users,current=current_user)
+    patients = Patients.query.all()
+    return render_template("admin.html", patients = patients,current=current_user)
+
+@views.route("/schedule")    
+def schedule():
+    return render_template("schedule.html", current= current_user) 
 
 
 
@@ -34,13 +60,13 @@ def admin():
 def update():
     
     if request.method == "POST":
-        user_data = User.query.get(request.form.get("id"))
+        patient_info = Patients.query.get(request.form.get("id"))
 
-        user_data.email = request.form["email"]
-        user_data.firstname = request.form["firstname"]
-        user_data.lastname = request.form["lastname"]
-        user_data.password = request.form["password"]
-        user_data.role = request.form["role"]
+        patient_info.email = request.form["email"]
+        patient_info.firstname = request.form["firstname"]
+        patient_info.lastname = request.form["lastname"]
+        patient_info.password = generate_password_hash(request.form["password"])
+        patient_info.contact_no = request.form["contact_no"]
 
         db.session.commit()
 
@@ -52,8 +78,8 @@ def update():
 
 @views.route("/delete/<int:id>")
 def delete(id):
-    delete_user = User.query.get(id)
-    db.session.delete(delete_user)
+    delete_patient = Patients.query.get(id)
+    db.session.delete(delete_patient)
     db.session.commit()
-    flash("User Deleted", category="success")
+    flash("Patient Successfully Deleted", category="success")
     return redirect(url_for("views.admin"))

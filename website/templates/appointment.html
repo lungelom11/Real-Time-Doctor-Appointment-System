@@ -2,5 +2,26 @@
 
 
 {% block content%}
-<h1>Appointment Dashboard</h1>
+<div class="container">
+   <h1 class="text-center mt-3">
+    Book Appointment
+   </h1>
+   <form action="#" method="post">
+      <label for="office" class="fs-3 mb-2">Select Dental Office:</label>
+      <select class="form-select" aria-label="Dental-Offices" name="branch">
+        <option value="Office-1" selected>Office One</option>
+        <option value="Office-2">Office Two</option>
+       </select>
+       <div class="my-3">
+         <label for="Date" class="fs-3 mb-2">Date:</label>
+         <input type="date" class="form-control" id="date" name="date">
+       </div>
+       <div class="mb-3">
+         <label for="time" class="fs-3 mb-2">Time:</label>
+         <input type="time" class="form-control" id="time" name="time">
+       </div>
+       <button type="submit" class="btn btn-outline-success">Book Appointment</button>
+   </form>
+</div>
+
 {% endblock %}

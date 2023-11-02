@@ -1,15 +1,26 @@
 {% extends "dashboard.html" %}
 
 {% block content %}
-<div class="container mt-5">
+<div class="container">
+  <h1 class="text-center my-3">
+    Contact Info
+  </h1>
   <form class="row g-3">
       <div class="col-md-6">
-        <label for="inputEmail4" class="form-label">Firstname</label>
-        <input type="email" class="form-control" id="inputEmail4">
+        <label for="firstname" class="form-label">Firstname</label>
+        <input type="text" class="form-control" id="firstname" value="{{current.firstname}}">
       </div>
       <div class="col-md-6">
-        <label for="inputPassword4" class="form-label">Lastname</label>
-        <input type="password" class="form-control" id="inputPassword4">
+        <label for="lastname" class="form-label">Lastname</label>
+        <input type="text" class="form-control" id="lastname" value="{{current.lastname}}">
+      </div>
+      <div class="col-md-6">
+        <label for="lastname" class="form-label">Contact No</label>
+        <input type="text" class="form-control" id="lastname" value="{{current.contact_no}}">
+      </div>
+      <div class="col-md-6">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" value="{{current.email}}">
       </div>
       <div class="col-12">
         <label for="inputAddress" class="form-label">Address</label>
@@ -35,7 +46,7 @@
         <input type="text" class="form-control" id="inputZip" required>
       </div>
       <div class="col-12">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Update</button>
       </div>
     </form>
 </div>

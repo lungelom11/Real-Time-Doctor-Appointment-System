@@ -4,34 +4,34 @@
 
 {% block body %}
 <div class="container">
-    <h1 class="mb-5">Manage Users</h1>
+    <h1 class="mb-5">Manage Patients</h1>
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">#</th>
+          <th scope="col">Patient_Id</th>
           <th scope="col">First</th>
           <th scope="col">Last</th>
           <th scope="col">Email</th>
-          <th scope="col">Role</th>
+          <th scope="col">Contact No</th>
           <th scope="col" class="text-center">Actions</th>
         </tr>
       </thead>
       <tbody>
-        {% for user in users%}
+        {% for patient in patients %}
         <tr>
-          <th scope="row">{{loop.index}}</th>
-          <td>{{user.firstname}}</td>
-          <td>{{ user.lastname }}</td>
-          <td>{{ user.email }}</td>
-          <td>{{ user.role }}</td>
+          <th scope="row">{{patient.id}}</th>
+          <td>{{patient.firstname}}</td>
+          <td>{{ patient.lastname }}</td>
+          <td>{{ patient.email }}</td>
+          <td>{{ patient.contact_no }}</td>
           <td class="actions d-flex justify-content-around">
             <span>
-              <a href="/update/{{user.id}}" data-bs-toggle="modal" data-bs-target="#updateUser{{user.id}}">
+              <a href="/update/{{patient.id}}" data-bs-toggle="modal" data-bs-target="#updatePatient{{patient.id}}">
                 <i class="fa-solid fa-pen-to-square" style="color: #1bd80e;"></i>
               </a>
             </span>
             <span>
-              <a href="/delete/{{ user.id }}" onclick="return confirm('Are you sure you want to delete the user?')">
+              <a href="/delete/{{ patient.id }}" onclick="return confirm('Are you sure you want to delete the user?')">
                 <i class="fa-solid fa-trash-can" style="color: #f20202;"></i>
               </a>
             </span>
@@ -39,36 +39,31 @@
           </td>
         </tr>
         <!--Update User Modal-->
-        <div class="modal fade" id="updateUser{{user.id}}" tabindex="-1" aria-labelledby="updateeUserModal" aria-hidden="true">
+        <div class="modal fade" id="updatePatient{{patient.id}}" tabindex="-1" aria-labelledby="updateeUserModal" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Update User</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Update Patient</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
                 <form class="bg-body-tertiary" action="{{url_for('views.update')}}" method="post">
                   <div class="form-floating mb-3">
-                      <input type="text" class="form-control" id="floatingInput" name="firstname" value="{{user.firstname}}">
+                      <input type="text" class="form-control" id="floatingInput" name="firstname" value="{{patient.firstname}}">
                       <label for="floatingInput">First Name</label>
-                      <input type="hidden" name="id" value="{{user.id}}">
+                      <input type="hidden" name="id" value="{{patient.id}}">
                   </div>
                   <div class="form-floating mb-3">
-                      <input type="text" class="form-control" id="floatingInput" name="lastname" value="{{user.lastname}}">
+                      <input type="text" class="form-control" id="floatingInput" name="lastname" value="{{patient.lastname}}">
                       <label for="floatingInput">Last Name</label>
                   </div>
                 <div class="form-floating mb-3">
-                  <input type="email" class="form-control" name="email" id="floatingInput" value="{{user.email}}">
+                  <input type="email" class="form-control" name="email" id="floatingInput" value="{{patient.email}}">
                   <label for="floatingInput">Email address</label>
                 </div>  
-                <div class="mb-3">
-                  <label for="role" class="role-text"> Select appropriate choice:</label>
-                  <select name="role"  class="form-select align-items-center"  aria-label="Roles">
-                      <option value="{{ user.role }}" disabled selected>{{ user.role }}</option>
-                      <option value="Doctor">Doctor</option>
-                      <option value="Patient">Patient</option>
-                      <option value="Admin">Admin</option>
-                    </select>
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" id="floatingInput" name="contact_no" value="{{patient.contact_no}}">
+                  <label for="floatingInput">Contact Number</label>
                 </div>
                 <div class="form-floating mb-3">
                   <input type="password" class="form-control" name="password" id="floatingPassword" value="test1234">
