@@ -1,7 +1,7 @@
 from . import db
 from flask_login import UserMixin
 
-class Patients(db.Model,UserMixin):
+class Patients(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(150), unique=True)
     firstname = db.Column(db.String(150))
