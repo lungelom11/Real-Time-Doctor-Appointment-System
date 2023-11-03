@@ -1,0 +1,49 @@
+{% extends "home.html" %}
+{% block title %} Admin {% endblock %}
+
+{% block body %}
+<div class="container-fluid bg-dark min-vh-100 d-flex flex-column align-items-center ">
+  <div class="container mt-5">
+      <p class="d-flex justify-content-evenly">
+          <a class="btn btn-primary btn-lg" data-bs-toggle="collapse" href="#doctor" role="button" aria-expanded="false" aria-controls="doctor">Doctor</a>
+          <a class="btn btn-primary btn-lg" data-bs-toggle="collapse" href="#administrator" role="button" aria-expanded="false" aria-controls="administrator"> Administrator</a>
+      </p>
+      <div class="row">
+          <div class="col">
+            <div class="collapse multi-collapse" id="doctor">
+              <div class="card card-body">
+                <form class="rounded-3 p-3" action="#" method="post">
+                  <div class="form-floating mb-3">
+                    <input type="email" class="form-control" name="email" id="floatingInput" placeholder="name@example.com" required>
+                    <label for="floatingInput">Email address</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Password">
+                    <label for="floatingPassword">Password</label>
+                  </div>
+                  <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="collapse multi-collapse" id="administrator">
+              <div class="card card-body">
+                <form class="rounded-3 p-3" action="#" method="post">
+                  <div class="form-floating mb-3">
+                    <input type="email" class="form-control" name="email" id="floatingInput" placeholder="name@example.com" required>
+                    <label for="floatingInput">Email address</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Password">
+                    <label for="floatingPassword">Password</label>
+                  </div>
+                  <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+  </div>
+</div>
+{% endblock %}

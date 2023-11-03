@@ -35,6 +35,9 @@ def appointment():
         
     return render_template("appointment.html", current=current_user)
 
+@views.route("/admin-area")
+def adminAria():
+    return render_template("admin-area.html")
 
 @views.route("/patient-info")    
 def patientInfo():
