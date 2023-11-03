@@ -36,7 +36,7 @@ def appointment():
     return render_template("appointment.html", current=current_user)
 
 @views.route("/admin-area")
-def adminAria():
+def adminArea():
     return render_template("admin-area.html")
 
 @views.route("/patient-info")    
@@ -57,8 +57,6 @@ def admin():
 def schedule():
     return render_template("schedule.html", current= current_user) 
 
-
-
 @views.route("/update", methods=["GET","POST"])
 def update():
     
@@ -77,8 +75,6 @@ def update():
 
         return redirect(url_for("views.admin"))
 
-    
-
 @views.route("/delete/<int:id>")
 def delete(id):
     delete_patient = Patients.query.get(id)
@@ -86,3 +82,7 @@ def delete(id):
     db.session.commit()
     flash("Patient Successfully Deleted", category="success")
     return redirect(url_for("views.admin"))
+
+@views.route("doctor-dashboard")
+def doctorDashboard():
+    return render_template("doctor-dashboard.html")
