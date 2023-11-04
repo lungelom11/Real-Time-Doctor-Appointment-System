@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request,redirect, url_for, flash, session
-from .models import Patients, Appointments
+from .models import Patients, Appointments, Doctor
 from . import db
 from werkzeug.security import generate_password_hash
 from flask_login import login_required, current_user
@@ -36,7 +36,7 @@ def appointment():
     return render_template("appointment.html", current=current_user)
 
 @views.route("/admin-area")
-def adminAria():
+def adminArea():
     return render_template("admin-area.html")
 
 @views.route("/patient-info")    
@@ -57,8 +57,6 @@ def admin():
 def schedule():
     return render_template("schedule.html", current= current_user) 
 
-
-
 @views.route("/update", methods=["GET","POST"])
 def update():
     
@@ -77,8 +75,6 @@ def update():
 
         return redirect(url_for("views.admin"))
 
-    
-
 @views.route("/delete/<int:id>")
 def delete(id):
     delete_patient = Patients.query.get(id)
@@ -86,3 +82,9 @@ def delete(id):
     db.session.commit()
     flash("Patient Successfully Deleted", category="success")
     return redirect(url_for("views.admin"))
+
+
+@views.route("/booked-appointments")
+@login_required
+def bookedAppointments():
+    return render_template("booked-appointments.html", doc= current_user)

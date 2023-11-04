@@ -30,3 +30,14 @@ class Appointments(db.Model, UserMixin):
         self.branch = branch
         self.date = date
         self.time = time
+
+
+class Doctor(db.Model, UserMixin):
+    doc_id = db.Column(db.Integer, primary_key=True)
+    firstname = db.Column(db.String(150))
+    lastname = db.Column(db.String(150))
+    email = db.Column(db.String(150), unique=True)
+    password = db.Column(db.String(150))
+
+    def get_id(self):
+        return (self.doc_id)

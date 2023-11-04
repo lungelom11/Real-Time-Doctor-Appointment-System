@@ -1,5 +1,5 @@
 {% extends "home.html" %}
-{% block title %} Admin {% endblock %}
+{% block title %} Admin Area {% endblock %}
 
 {% block body %}
 <div class="container-fluid bg-dark min-vh-100 d-flex flex-column align-items-center ">
@@ -12,7 +12,7 @@
           <div class="col">
             <div class="collapse multi-collapse" id="doctor">
               <div class="card card-body">
-                <form class="rounded-3 p-3" action="#" method="post">
+                <form class="rounded-3 p-3" action="/login-doctor" method="post">
                   <div class="form-floating mb-3">
                     <input type="email" class="form-control" name="email" id="floatingInput" placeholder="name@example.com" required>
                     <label for="floatingInput">Email address</label>
@@ -22,6 +22,7 @@
                     <label for="floatingPassword">Password</label>
                   </div>
                   <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
+                  <small class="mx-auto"  data-bs-toggle="modal" data-bs-target="#registerDoctor"><a href="#">register</a></small>
                 </form>
               </div>
             </div>
@@ -29,7 +30,7 @@
           <div class="col">
             <div class="collapse multi-collapse" id="administrator">
               <div class="card card-body">
-                <form class="rounded-3 p-3" action="#" method="post">
+                <form class="rounded-3 p-3" action="" method="post">
                   <div class="form-floating mb-3">
                     <input type="email" class="form-control" name="email" id="floatingInput" placeholder="name@example.com" required>
                     <label for="floatingInput">Email address</label>
@@ -43,7 +44,42 @@
               </div>
             </div>
           </div>
-        </div>
+        </div>    
   </div>
+
+  <!--Register Doctor Modal-->
+  <div class="modal fade" id="registerDoctor" tabindex="-1" aria-labelledby="registerDoctor" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5">Register</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form class="bg-body-tertiary" action="/register-doctor" method="post">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInput" name="firstname">
+                <label for="floatingInput">First Name</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInput" name="lastname">
+                <label for="floatingInput">Last Name</label>
+            </div>
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" name="email" id="floatingInput">
+            <label for="floatingInput">Email address</label>
+          </div>  
+          <div class="form-floating mb-3">
+            <input type="password" class="form-control" name="password" id="floatingPassword">
+            <label for="floatingPassword">Password</label>
+          </div>
+          <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 </div>
 {% endblock %}

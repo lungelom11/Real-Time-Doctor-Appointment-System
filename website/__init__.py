@@ -15,11 +15,13 @@ def create_app():
 
     from .views import views
     from .auth import auth
+    from .docViews import doc
 
     app.register_blueprint(views, url_prefix="/")
     app.register_blueprint(auth, url_prefix="/")
+    app.register_blueprint(doc,url_prefix="/")
 
-    from .models import Patients, Appointments
+    from .models import Patients, Appointments, Doctor
 
     with app.app_context():
         db.create_all()
@@ -29,7 +31,8 @@ def create_app():
     login_manager.init_app(app)
 
     @login_manager.user_loader
-    def load_user(id):
+    def load_user(id,):
         return Patients.query.get(int(id))
+  
 
     return app
