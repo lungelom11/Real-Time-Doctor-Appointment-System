@@ -1,6 +1,52 @@
-{% extends "home.html"%}
-{% block title %} Dr. | Dashboard {% endblock %}
+{% extends "home.html" %}
 
-{% block body%}
-<h1 class="text-center">Doctor Dashboard</h1>
+{% block title %}  Dashboard | {{ doc.firstname}}  {% endblock %}
+
+
+{% block body %} 
+<div class="d-flex">
+    <div class="min-vh-100 d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
+        <div class="d-flex flex-column align-items-center justify-content-center mb-3 mb-md-0 me-ms-auto text-white">
+            <h3>{{ doc.firstname }}</h3>
+            <p class="text-primary">{{ doc.email }}</p>
+        </div>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+          <li class="nav-item mb-3">
+            <a href="/doctor/home" class="nav-link text-white">
+              <i class="bi bi-house me-2"></i>
+              Home
+            </a>
+          </li>
+          <li class="nav-item mb-3">
+            <a href="/booked-appointments" class="nav-link text-white">
+              <i class="bi bi-calendar-check me-2 mb-1"></i>
+              Booked appointments
+            </a>
+          </li>
+          <li class="nav-item mb-3">
+            <a href="/overall" class="nav-link text-white">
+            <i class="bi bi-calendar4-week me-2"></i>
+              Overall Schedule
+            </a>
+          </li>
+        </ul>
+        <hr>
+        <div class="dropdown">
+          <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-person me-2" ></i>
+            <strong>{{ doc.firstname }}</strong>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+            <li><a class="dropdown-item" href="/patient-info">Profile</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="/logout">Sign out</a></li>
+          </ul>
+        </div>
+    </div>
+    {% block content%}
+        
+    {% endblock %}
+</div>
+    
 {% endblock %}

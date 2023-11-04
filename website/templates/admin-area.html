@@ -12,7 +12,7 @@
           <div class="col">
             <div class="collapse multi-collapse" id="doctor">
               <div class="card card-body">
-                <form class="rounded-3 p-3" action="/doctor/dashboard" method="post">
+                <form class="rounded-3 p-3" action="/login-doctor" method="post">
                   <div class="form-floating mb-3">
                     <input type="email" class="form-control" name="email" id="floatingInput" placeholder="name@example.com" required>
                     <label for="floatingInput">Email address</label>
@@ -30,7 +30,7 @@
           <div class="col">
             <div class="collapse multi-collapse" id="administrator">
               <div class="card card-body">
-                <form class="rounded-3 p-3" action="#" method="post">
+                <form class="rounded-3 p-3" action="" method="post">
                   <div class="form-floating mb-3">
                     <input type="email" class="form-control" name="email" id="floatingInput" placeholder="name@example.com" required>
                     <label for="floatingInput">Email address</label>
@@ -56,7 +56,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form class="bg-body-tertiary" action="{{url_for('auth.registerDoctor')}}" method="post">
+          <form class="bg-body-tertiary" action="/register-doctor" method="post">
             <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="floatingInput" name="firstname">
                 <label for="floatingInput">First Name</label>

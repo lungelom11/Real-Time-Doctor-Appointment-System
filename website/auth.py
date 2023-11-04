@@ -64,8 +64,6 @@ def logout():
     logout_user()
     return redirect(url_for("views.home"))
 
-@auth.route("/register-doctor", methods=["GET","POST"])
-def registerDoctor():
     if request.method == "POST":
         firstname = request.form.get("firstname")
         lastname = request.form.get("lastname")
@@ -86,25 +84,8 @@ def registerDoctor():
             new_doctor = Doctor(firstname=firstname, lastname=lastname, email=email, password=generate_password_hash(password))
             db.session.add(new_doctor)
             db.session.commit()
+            login_user(doctor, remember=True)
             flash("Account created!", category="success")
             return redirect(url_for("views.doctorDashboard"))
             
     return render_template("admin-area.html")
-
-
-@auth.route("/doctor/dashboard", methods=["GET","POST"])
-def doctorLogin():
-    if request.method =="POST":
-        email = request.form.get("email")
-        password = request.form.get("password")
-        doctor = Doctor.query.filter_by(email=email).first()
-        if Doctor:
-            if check_password_hash(doctor.password, password):
-                    flash("Logged in successfully", category="success")   
-                    return render_template("doctor-dashboard.html")
-            else:
-                flash("Incorrect Password, please try again", category="error")
-        else:
-            flash("Email does not exist!", category="error")
-
-    return render_template("views.adminArea")

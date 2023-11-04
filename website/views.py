@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request,redirect, url_for, flash, session
-from .models import Patients, Appointments
+from .models import Patients, Appointments, Doctor
 from . import db
 from werkzeug.security import generate_password_hash
 from flask_login import login_required, current_user
@@ -83,6 +83,8 @@ def delete(id):
     flash("Patient Successfully Deleted", category="success")
     return redirect(url_for("views.admin"))
 
-@views.route("doctor-dashboard")
-def doctorDashboard():
-    return render_template("doctor-dashboard.html")
+
+@views.route("/booked-appointments")
+@login_required
+def bookedAppointments():
+    return render_template("booked-appointments.html", doc= current_user)

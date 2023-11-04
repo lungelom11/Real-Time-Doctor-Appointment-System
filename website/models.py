@@ -38,3 +38,6 @@ class Doctor(db.Model, UserMixin):
     lastname = db.Column(db.String(150))
     email = db.Column(db.String(150), unique=True)
     password = db.Column(db.String(150))
+
+    def get_id(self):
+        return (self.doc_id)
